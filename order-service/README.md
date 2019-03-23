@@ -9,14 +9,14 @@ mvn sprint-boot:run
 ## Pedidos
 
 #### Listar por id
-
+```sh
 curl -X GET \
   http://localhost:8080/orders/1 \
   -H 'cache-control: no-cache' \
   -H 'content-type: application/json' \
   -H 'postman-token: 2d4256c0-5a4d-5ec3-569d-68e36e42fbf4' \
   -d '{}'
-
+```
 #### Inserir
 
 ```sh
@@ -51,6 +51,8 @@ curl -X POST \
 ```
 
 #### Atualizar
+
+```sh
 curl -X PUT \
   http://localhost:8080/orders/45 \
   -H 'cache-control: no-cache' \
@@ -78,6 +80,7 @@ curl -X PUT \
         "brand": "VISA"
     }
 }'
+```
 #### Remover
 
 ```sh
