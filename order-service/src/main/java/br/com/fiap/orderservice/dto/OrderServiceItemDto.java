@@ -2,6 +2,10 @@ package br.com.fiap.orderservice.dto;
 
 import lombok.*;
 
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Size;
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -9,8 +13,12 @@ import lombok.*;
 @AllArgsConstructor
 
 public class OrderServiceItemDto {
-    // preço unitário de cada item, preço total do
-    // pagamento, forma de pagamento, data do pedido e status do pedido.
-    public long price;
+
+    public Integer id;
+
+    @Digits(integer = 6, fraction = 2)
+    public BigDecimal price;
+
     public String description;
+
 }
