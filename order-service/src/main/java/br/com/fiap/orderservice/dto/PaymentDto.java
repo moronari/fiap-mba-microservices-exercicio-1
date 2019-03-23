@@ -2,8 +2,6 @@ package br.com.fiap.orderservice.dto;
 
 import lombok.*;
 
-import java.util.ArrayList;
-
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -18,12 +16,9 @@ import java.util.ArrayList;
 //        também os atributos de pagamento como id da transação, número do cartão,
 //        validade do cartão, bandeira;
 
-public class OrderServiceDto {
-    private Integer id;
-    private String email;
-    private String nome;
-    private String shippingAddress;
-    private String orderDate;
-    private ArrayList<OrderServiceItemDto> item = new ArrayList();
-    private PaymentDto payment;
+public class PaymentDto {
+    private Integer idTransaction;
+    private String  cardNumber;
+    private String  expDate;
+    private String  brand;
 }

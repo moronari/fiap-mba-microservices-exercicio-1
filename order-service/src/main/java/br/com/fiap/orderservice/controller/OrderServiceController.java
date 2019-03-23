@@ -7,41 +7,46 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 @Slf4j
 @RestController
+@RequestMapping("orders")
 public class OrderServiceController {
 
-    @GetMapping("getOrders/{id}")
+    OrderServiceDto orderDto = new OrderServiceDto();
+
+    @GetMapping("/{id}")
     public ResponseEntity<OrderServiceDto> load(@PathVariable(value="id",required = true) Integer id){
 
-        log.info("getOrders Id: %s", id );
-
-        OrderServiceDto orderDto = new OrderServiceDto();
+        log.info("getOrders Id: {}", id );
 
         return new ResponseEntity<>(orderDto, HttpStatus.OK);
 
     }
 
-    @GetMapping("/getOrders")
-    public ResponseEntity<OrderServiceDto> load(OrderServiceDto orderDto){
+    @GetMapping()
+    public ResponseEntity<ArrayList<OrderServiceDto>> all(){
 
         log.info("getOrders All");
 
-        return new ResponseEntity<>(orderDto, HttpStatus.OK);
+        ArrayList<OrderServiceDto> orders = new ArrayList<>();
+
+        return new ResponseEntity<>(orders, HttpStatus.OK);
 
     }
 
-    @PostMapping("/inputOrder")
-    public ResponseEntity<OrderServiceDto> input(OrderServiceDto orderDto){
+    @PostMapping()
+    public ResponseEntity<OrderServiceDto> input(@RequestBody OrderServiceDto orderDto){
         return new ResponseEntity<>(orderDto, HttpStatus.OK);
     }
 
-    @PutMapping("/updateOrder")
-    public ResponseEntity<OrderServiceDto> update(OrderServiceDto orderDto){
+    @PutMapping("/{id}")
+    public ResponseEntity<OrderServiceDto> update(@RequestBody OrderServiceDto orderDto){
         return new ResponseEntity<>(orderDto, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<OrderServiceDto> delete(@PathVariable(value="id",required = true) Integer id){
         return new ResponseEntity<>(orderDto, HttpStatus.OK);
     }
